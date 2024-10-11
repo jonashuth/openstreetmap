@@ -20,7 +20,7 @@
         async function loadMap() {
             const params = new URLSearchParams(window.location.search);
             if (!params.has("address")) {
-                alert("Keine Adresse angegeben.");
+                console.log("Keine Adresse angegeben.");
                 return;
             }
             const address = params.get("address");
@@ -43,22 +43,22 @@
                         const lon = parseFloat(data[0].lon);
                         initializeMap(lat, lon);
                     } else {
-                        alert("Adresse nicht gefunden.");
+                        console.log("Adresse nicht gefunden.");
                     }
                 } catch (error) {
                     if (error.name === 'AbortError') {
-                        alert("Die Anfrage hat zu lange gedauert und wurde abgebrochen.");
+                        console.log("Die Anfrage hat zu lange gedauert und wurde abgebrochen.");
                     } else if (error.message.includes('Failed to fetch')) {
-                        alert("Netzwerkfehler: Bitte überprüfen Sie Ihre Internetverbindung.");
+                        console.log("Netzwerkfehler: Bitte überprüfen Sie Ihre Internetverbindung.");
                     } else {
                         console.error("Fehler beim Abrufen der Geodaten:", error);
-                        alert("Fehler beim Abrufen der Geodaten.");
+                        console.log("Fehler beim Abrufen der Geodaten.");
                     }
                 } finally {
                     clearTimeout(timeoutId);
                 }
             } else {
-                alert("Keine Adresse angegeben.");
+                console.log("Keine Adresse angegeben.");
             }
         }
 
